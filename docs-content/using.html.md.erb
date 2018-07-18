@@ -159,3 +159,34 @@ If a .NET app fails to start, consult the following list of errors and their pos
 * `NoCompatibleCell`: Your PCF deployment cannot connect to your Windows cell. See the [Troubleshooting Windows Cells](troubleshooting.html) topic for information about troubleshooting your Windows cell configuration.
 
 * `Start unsuccessful`: Your app may not contain the required DLL files and dependencies. Ensure that you are pushing from a directory containing your app dependencies, or specify the directory with the `-p` flag. Your app also may be misconfigured. Ensure that your app directory contains either a valid `.exe` binary or a valid `Web.config` file.
+
+###<a id='remote-debugging'></a> Remote Debugging an App
+
+To debug an app remotely using Visual Studio 2015 or 2017, do the following:
+
+1. Publish the project to CF filesystem with `Debug any-cpu`.
+
+1. Copy the `vs2015-remote-debugger` tarball content into a directory under the published folder.
+  <p class="note"><strong>Note</strong>: The remote tools patch version must match your Visual Studio development version.</p>
+
+1. Run `cf push` from the published folder with the debugger tools.
+
+1. Curl the app endpoint with the following command:
+  <pre class="terminal">$ cf ssh app -L 4022:localhost:4022</pre>
+
+1. Run `msvsmon.exe` from the app directory with the following arguments:
+  <pre class="terminal">.\msvsmon /noauth /anyuser /port 4022 /silent /nosecuritywarn</pre>
+
+1. In Visual Studio, navigate to **Debug > Attach to process**.
+
+1. Select **Remote (no authentication)**.
+
+1. Qualifier: `localhost:4022`.
+
+1. Ensure that **attach** is set to `Managed (v4.6, v4.5...)`.
+
+1. Select `hwc.exe`.
+
+1. Set a debug point.
+
+1. Curl the app.
