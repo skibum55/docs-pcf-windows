@@ -179,8 +179,6 @@ Perform the following steps to run the Stemcell Automation tool:
 		```
 		Invoke-WebRequest -Uri "STEMCELL-AUTOMATION-URL" -OutFile ".\StemcellAutomation.zip"
 		```
-		For example:
-		<pre class="terminal">Invoke-WebRequest -Uri "http<span>s</span>://github.com/cloudfoundry-incubator/bosh-windows-stemcell-automation/releases/download/v0.1/StemcellAutomation.zip" -OutFile ".\StemcellAutomation.zip"</pre>
 
 1. Start PowerShell in the Windows VM and run the following command to extract the contents of `StemcellAutomation.zip`:
 
@@ -191,14 +189,12 @@ Perform the following steps to run the Stemcell Automation tool:
 1. Begin the automation process by running the following command within the `StemcellAutomation` folder:
 
 	```
-	.\Setup.ps1
+	.\Setup.ps1 --Skip-Random-Password
 	```
-	By default the setup script randomizes the Administrator's password. To avoid this, and maintain access to the VM after preparation, use the `-SkipRandomPassword` flag. For example: 
-
-	<pre class="terminal">.\Setup.ps1 -SkipRandomPassword</pre>
+	By default the setup script randomizes the Administrator's password. To avoid this, and maintain access to the VM after preparation, use the `--SkipRandomPassword` flag. 
 	<p class="note"><strong>Note</strong>: Stemcell Automation can take between twenty minutes and one and a half hours depending on the environment.</p>
 1. The VM will reboot once and the second half of the automation process will continue. 
-	At this stage, there is no visual feedback for the process. 
+	<p class="note"><strong>Note</strong>: At this stage, there is no visual feedback for the process.</p> 
 	<br><br>
 	If you want to check the progress of the automation process after the reboot, perform the following steps:
 

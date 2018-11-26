@@ -1,2 +1,2 @@
 
-r301 '/', '/pas-windows/index.html'
+r301 '/', '/windows/stemcell-automation-1803.html'
