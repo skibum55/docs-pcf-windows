@@ -174,10 +174,10 @@ Perform the following steps to run the Stemcell Automation tool:
 		```
 		[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 		```
-	1. Run the following command, replacing `STEMCELL-AUTOMATION-URL` with the URL of the Stemcell Automation tool download:
+	1. Run the following command, replacing `STEMCELL-AUTOMATION-VERSION` with the version of the Stemcell Automation tool to download based on the [compatibility matrix](#compatibility-matrix):
 
 		```
-		Invoke-WebRequest -Uri "STEMCELL-AUTOMATION-URL" -OutFile ".\StemcellAutomation.zip"
+		Invoke-WebRequest -Uri "https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-automation/releases/download/STEMCELL-AUTOMATION-VERSION/StemcellAutomation.zip" -OutFile ".\StemcellAutomation.zip -UseBasicParsing
 		```
 
 1. Start PowerShell in the Windows VM and run the following command to extract the contents of `StemcellAutomation.zip`:
