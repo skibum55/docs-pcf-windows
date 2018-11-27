@@ -1,74 +1,18 @@
 ---
-title: Pivotal Application Service for Windows
+title: PASW Stemcell Automation Guide
 owner: Windows
 ---
 
 <strong><%= modified_date %></strong>
 
-## <a id='overview'></a> Overview
+This site documents how to use the Stemcell Automation tool to create a stemcell for Pivotal Application Service for Windows (PASW). PASW needs this stemcell to create VMs on vSphere. 
 
-Pivotal Application Service (PAS) for Windows enables operators to provision, operate, and manage Windows cells on Pivotal Cloud Foundry (PCF).
+If you are deploying PASW v2.1 or v2.2, you must create 1709 stemcells.
 
-After operators install the PAS for Windows tile on the Ops Manager Installation Dashboard, developers can push .NET applications to Windows cells using the [Cloud Foundry Command Line Interface](https://docs.pivotal.io/pivotalcf/cf-cli/) (cf CLI).
+If you are deploying PASW v2.3+, you must create 1803 stemcells.
 
-For more information about how PAS for Windows works, see the [Product Architecture](architecture.html) topic.
+See the following topics:
 
-For information about deploying .NET apps to PAS for Windows, see the [Tips for .NET Developers](using.html) topic.
+* [Using the Stemcell Automation Tool for 1709 Stemcells](stemcell-automation-1709.html)
+* [Using the Stemcell Automation Tool for 1803 Stemcells](stemcell-automation-1803.html)
 
-For the PAS for Windows release notes, see the [Release Notes](release-notes.html) topic.
-
-## <a id='reqs'></a> Requirements
-
-To install the PAS for Windows tile, you must have the following:
-
-* Ops Manager v2.3 or later and PAS v2.3 or later deployed to vSphere, Amazon Web Services (AWS), Google Cloud Platform (GCP), or Azure
-
-* A Windows stemcell, which you can obtain by following the directions in [Downloading or Creating Windows Stemcells](./stemcells.html).
-
-The minimum resource requirements for each Windows cell are as follows:
-
-* Disk size: 64&nbsp;GB (100&nbsp;GB recommended)
-
-* Memory: 16&nbsp;GB
-
-* CPUs: 4
-
-
-## <a id='contents'></a>Contents
-
-### <a id='understand'></a> Understanding PAS for Windows
-
-* <a href="architecture.html" class="subnav">Product Architecture</a>
-
-### <a id='install'></a> Installation Guide
-
-* <a href="stemcells.html" class="subnav">Downloading or Creating Windows Stemcells</a>
-
-* <a href="create-vsphere-stemcell.html" class="subnav">Creating a vSphere Windows Stemcell</a>
-
-* <a href="installing.html" class="subnav">Installing and Configuring PAS for Windows</a>
-
-* <a href="isolation.html" class="subnav">Windows Cells in Isolation Segments</a>
-
-* <a href="migrating.html" class="subnav">Migrating Apps to PAS for Windows</a>
-
-### <a id='admin'></a> Admin Guide
-
-* <a href="./upgrade-windows.html" class="subnav">Upgrading Windows Cells</a>
-
-* <a href="./troubleshooting.html" class="subnav">Troubleshooting Windows Cells</a>
-
-### <a id='dev'></a> Developer Guide
-
-* <a href="using.html" class="subnav">Tips for .NET Developers</a>
-
-
-## <a id='limitations'></a> Limitations
-
-PAS for Windows has the following limitations:
-
-* Developers cannot push Docker or other OCI-compatible images to Windows Diego cells.
-* Container-to-container networking is not yet available for Windows-hosted applications.
-* Volume Services are not yet available for Windows-hosted applications.
-* OpenStack is currently not supported for PASW. Contact your Pivotal representative for information on OpenStack deployments.
-* Due to a [known issue](https://github.com/Microsoft/hcsshim/issues/244) in Windows Server OS, applications hosted on PAS for Windows cannot route traffic when deployed with the IPsec add-on for PCF.
